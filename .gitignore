@@ -1,0 +1,9 @@
+**/.settings/*
+**/Debug/*
+**/Binary/*
+**/Release/*
+*.launch
+.vscode/*
+**/__pycache__/*
+*.o
+/NonSecureToSecure/**/*.o

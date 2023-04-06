@@ -1,0 +1,16 @@
+Anjay-stm32-azurertos-client
+Copyright 2023 AVSystem
+
+This product includes software developed at AVSystem (www.avsystem.com).
+
+This product bundles Anjay
+(https://github.com/AVSystem/Anjay), licensed under the terms of the
+AVSystem-5-clause License. See Anjay/LICENSE file for details.
+
+This product bundles the AVSystem Commons Library
+(https://github.com/AVSystem/avs_commons), also licensed under the terms of the
+Apache License, version 2.0. See avs_commons/NOTICE file for details.
+
+This product bundles Mbed TLS
+(https://github.com/ARMmbed/mbedtls), also licensed under the terms of the
+Apache License, version 2.0. See mbedtls/LICENSE file for details.
