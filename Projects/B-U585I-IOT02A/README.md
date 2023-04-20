@@ -34,6 +34,16 @@ For more details, refer to [UM2262 "Getting started with SBSFU - software expans
 - **app_compat**<br/>
   Application drivers for sensors and non-volatile memory
 
+## Dependencies
+
+1. STM32CubeProgrammer
+1. Support for shell scripts execution (on Windows for example Git or Cygwin can be used)
+1. Python3
+1. Python modules: `jinja2`, `pyyaml`, `pycryptodomex`, `ecdsa`, `numpy`, `pyelftools`, `click`, `cryptography`, `cbor`, `intelhex` To install all at once, run:<br/>
+   ```
+   pip3 install jinja2 pyyaml pycryptodomex ecdsa numpy pyelftools click cryptography cbor intelhex
+   ```
+
 ## Flashing the board
 
 You need to follow a strict compilation order:
@@ -54,7 +64,6 @@ You need to follow a strict compilation order:
      (`Projects/B-U585I-IOT02A/BG96/Binary/sbsfu_sign.bin`).
      
 1. Flashing<br/>
-   **STM32CubeProgrammer** application is needed.<br/>
    - Ensure the switch SW1 (BOOT0 pin) on B-U585I-IOT02A board is on position 0 to boot from Flash. 
    - Connect microUSB cable to the B-U585I-IOT02A board (CN8)
    - Execute regression script to perform device initialization (`Projects/B-U585I-IOT02A/SBSFU_Boot/STM32CubeIDE/regression.sh`)

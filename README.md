@@ -43,6 +43,13 @@ You must upgrade the firmware of the modem to at least `BG96MAR02A08M1G` revisio
 
 ## Configuration menu
 
+To connect with the device through the serial port interface, use serial communication program such as PuTTY or minicom. For example:
+```
+minicom -b 115200 -D <device_name>
+```
+where the <device_name> is a name of the serial port, e.g. `/dev/ttyACM0`.
+
+
 While connected to a serial port interface, and during bootup, the device shows:
 
 ```
