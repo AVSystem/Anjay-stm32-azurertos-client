@@ -24,7 +24,7 @@
 #define DEFAULT_APN "internet"
 #define DEFAULT_APN_USERNAME "internet"
 #define DEFAULT_APN_PASSWORD "internet"
-#define FIRMWARE_VERSION "23.04"
+#define FIRMWARE_VERSION "23.04.1"
 
 void generate_default_endpoint_name(char *endpoint_name, size_t len);
 
