@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 AVSystem <avsystem@avsystem.com>
+ * Copyright 2023-2025 AVSystem <avsystem@avsystem.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 #define DEFAULT_APN "internet"
 #define DEFAULT_APN_USERNAME "internet"
 #define DEFAULT_APN_PASSWORD "internet"
-#define FIRMWARE_VERSION "23.04.1"
+#define FIRMWARE_VERSION "25.05"
 
 void generate_default_endpoint_name(char *endpoint_name, size_t len);
 

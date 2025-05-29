@@ -1,5 +1,13 @@
 # Changelog
 
+## 25.05 (May 29th, 2025)
+
+### Discountinued the project
+
+### Improvements
+- Updated Anjay to 3.10.0 and license NOTICE file
+- Updated X-Cube-Cellular to version 7.1.0
+
 ## 23.04.01 (April 20th, 2023)
 
 ### Improvements

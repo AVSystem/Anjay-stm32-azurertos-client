@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 AVSystem <avsystem@avsystem.com>
+ * Copyright 2023-2025 AVSystem <avsystem@avsystem.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,9 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Licensed under the AVSystem-5-clause License.
- * See the attached LICENSE file for details.
  */
 
 #ifndef AVS_COAP_CONFIG_H
@@ -79,10 +76,34 @@
 #define WITH_AVS_COAP_OBSERVE
 
 /**
+ * Turn on cancelling observation on a timeout.
+ *
+ * Only meaningful if <c>WITH_AVS_COAP_OBSERVE</c> is enabled.
+ *
+ * NOTE: LwM2M specification requires LwM2M server to send Cancel Observation
+ * request. Meanwhile CoAP RFC 7641 states that timeout on notification should
+ * cancel it. This setting is to enable both of these behaviors with default
+ * focused on keeping observations in case of bad connectivity.
+ */
+/* #undef WITH_AVS_COAP_OBSERVE_CANCEL_ON_TIMEOUT */
+
+/**
+ * Force cancelling observation, even if a confirmable notification yielding
+ * an error response is not acknowledged or rejected with RST by the observer.
+ *
+ * This is a circumvention for some non-compliant servers that respond with an
+ * RST message to a confirmable notification yielding an error response. This
+ * setting makes the library cancel the observation in such cases, even though
+ * the notification is formally rejected. Additionally, it will also make the
+ * library cancel the observation if no response is received at all.
+ */
+#define WITH_AVS_COAP_OBSERVE_FORCE_CANCEL_ON_UNACKED_ERROR
+
+/**
  * Enable support for observation persistence (<c>avs_coap_observe_persist()</c>
  * and <c>avs_coap_observe_restore()</c> calls).
  *
- * Only meaningful <c>WITH_AVS_COAP_OBSERVE</c> is enabled.
+ * Only meaningful if <c>WITH_AVS_COAP_OBSERVE</c> is enabled.
  */
 /* #undef WITH_AVS_COAP_OBSERVE_PERSISTENCE */
 

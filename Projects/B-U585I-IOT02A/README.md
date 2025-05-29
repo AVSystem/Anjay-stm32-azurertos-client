@@ -5,18 +5,18 @@ Anjay client with FOTA for B-U585I-IOT02A development kit.
 This example is built upon Secure Boot and Secure Firmware Update Application (v1.0.2) provided by STMicroelectronics:
 [STM32CubeU5 SBSFU Application](https://github.com/STMicroelectronics/STM32CubeU5/tree/v1.0.2/Projects/B-U585I-IOT02A/Applications/SBSFU)
 
-In order to **not use FOTA** with Secure Boot and Secure Firmware Update applications, switch the project's **Build configuration** to **Debug** and simply build the application. 
+In order to **not use FOTA** with Secure Boot and Secure Firmware Update applications, switch the project's **Build configuration** to **Debug** and simply build the application.
 If B-U585I-IOT02A board is in secure mode (TrustZone is active), before flashing follow [Disabling TrustZone](#Disabling-TrustZone) section.
 
 ## Secure Boot and Secure Firmware Update Application
 
-The Secure Boot and Secure Firmware Update solution allows the update of the STM32 microcontroller built-in program 
-with new firmware versions, adding new features and correcting issues. The update process is performed in 
+The Secure Boot and Secure Firmware Update solution allows the update of the STM32 microcontroller built-in program
+with new firmware versions, adding new features and correcting issues. The update process is performed in
 a secure way to prevent unauthorized updates and access to confidential on-device data.
 
-The Secure Boot (Root of Trust services) is immutable code, always executed after a system reset, that checks STM32 
-static protections, activates STM32 runtime protections and then verifies the authenticity (RSA or ECDSA signature) and 
-integrity (SHA256) of the application code before execution in order to ensure that invalid or malicious code cannot be run. 
+The Secure Boot (Root of Trust services) is immutable code, always executed after a system reset, that checks STM32
+static protections, activates STM32 runtime protections and then verifies the authenticity (RSA or ECDSA signature) and
+integrity (SHA256) of the application code before execution in order to ensure that invalid or malicious code cannot be run.
 The default asymmetric key (RSA or ECDSA) is taken from `SBSFU_Boot/Src/keys.c`
 
 For more details, refer to [UM2262 "Getting started with SBSFU - software expansion for STM32Cube"](https://www.st.com/resource/en/user_manual/um2262-getting-started-with-the-xcubesbsfu-stm32cube-expansion-package-stmicroelectronics.pdf)
@@ -30,7 +30,7 @@ For more details, refer to [UM2262 "Getting started with SBSFU - software expans
 - **Linker**<br/>
   Memory layout definition shared between SBSFU_Boot, SBSFU_Secure_App and Anjay application
 - **BG96**<br/>
-  Anjay application using BG96 module, with Firmware Update object 
+  Anjay application using BG96 module, with Firmware Update object
 - **app_compat**<br/>
   Application drivers for sensors and non-volatile memory
 
@@ -50,10 +50,10 @@ You need to follow a strict compilation order:
 
 1. Compile **SBSFU_Boot** application<br/>
    This step creates the secure boot and secure firmware update binary including provisioned user data (keys, IDs...).
-   
+
 1. Compile **SBSFU_Secure_App** application<br/>
    This step creates the SBSFU Application Secure binary.
-   
+
 1. Compile **Anjay-stm32-azurertos-client-B-U585I-IOT02A-BG96** application (set **Build configuartion** to **Release**)<br/>
    It generates:<br/>
    - A binary file contains secure and non-secure application for use in flashing process<br/>
@@ -62,9 +62,9 @@ You need to follow a strict compilation order:
      (`Projects/B-U585I-IOT02A/BG96/Binary/sbsfu_enc_sign.bin`).
    - The assembled SBSFU signed image for use in FOTA process<br/>
      (`Projects/B-U585I-IOT02A/BG96/Binary/sbsfu_sign.bin`).
-     
+
 1. Flashing<br/>
-   - Ensure the switch SW1 (BOOT0 pin) on B-U585I-IOT02A board is on position 0 to boot from Flash. 
+   - Ensure the switch SW1 (BOOT0 pin) on B-U585I-IOT02A board is on position 0 to boot from Flash.
    - Connect microUSB cable to the B-U585I-IOT02A board (CN8)
    - Execute regression script to perform device initialization (`Projects/B-U585I-IOT02A/SBSFU_Boot/STM32CubeIDE/regression.sh`)
    - Program Boot and Application binaries by executing SBSFU_UPDATE.sh script (`Projects/B-U585I-IOT02A/SBSFU_Boot/STM32CubeIDE/SBSFU_UPDATE.sh`)
@@ -89,11 +89,12 @@ In order to perform firmware update:
     Firmware updated from version 'v1.0' to 'v2.0'
     ```
     where `v1.0` and `v2.0` will be set to firmware versions you set earlier.
- 
+
 ## Disabling TrustZone
 
+- Make sure that jumper JP3 is plugged
 - Set the SW1 (BOOT0) to the "1" position - this will cause the MCU to boot in the DFU mode
-- Connect your computer to the USB-C connector at the top (CN1);  
+- Connect your computer to the USB-C connector at the top (CN1);
   **NOTE**: - the microUSB cable (CN8, ST-Link) needs to still be plugged in for power
 - Reset the board
 - Run:

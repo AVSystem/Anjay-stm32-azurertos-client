@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 AVSystem <avsystem@avsystem.com>
+ * Copyright 2023-2025 AVSystem <avsystem@avsystem.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,8 @@ avs_time_monotonic_t avs_time_monotonic_now(void) {
 }
 
 avs_time_real_t avs_time_real_now(void) {
-    const int64_t ticks = osKernelGetTickCount();
-    const int64_t time_ms = ticks * 1000 / osKernelGetTickFreq();
-    return avs_time_real_from_scalar(time_ms, AVS_TIME_MS);
+    avs_time_real_t result = {
+        .since_real_epoch = avs_time_monotonic_now().since_monotonic_epoch
+    };
+    return result;
 }
